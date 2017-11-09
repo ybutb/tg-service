@@ -22,10 +22,11 @@ services:
 
     web:
         image: tg-service
+        container_name: tg-service.com
         domainname: tg-service.com
         entrypoint: npm run run
         ports:
-            - "8081:80"
+            - "5858:5858"
         volumes:
             - ./:/usr/src/app
         env_file: .env

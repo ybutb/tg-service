@@ -13,9 +13,7 @@ test: update
 	@docker-compose up test
 
 start:
-	@docker run -it --rm -P \
- 		-v $(shell pwd):/usr/src/app -w /usr/src/app $(DOCKER_REGISTRY) \
- 		npm run run
+	@docker-compose up web
 
 ssh:
 	@docker exec -it $(DOCKER_REGISTRY) sh

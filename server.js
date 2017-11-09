@@ -6,10 +6,11 @@ const process = require('process');
 const router = require('./dist/components/router');
 const express = require('express');
 const app = express();
+const PORT = process.env.PORT || 5858;
 
 process.title = 'tg-service';
 
 app.use(router);
-app.listen(8081);
+app.listen(PORT);
 
 process.once('SIGTERM', process.exit);
