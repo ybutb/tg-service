@@ -1,6 +1,6 @@
 
 const filters = function() {
-    pub = {};
+    let pub = {};
 
     pub.base64Filter = function(string) {
         return string;

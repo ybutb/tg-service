@@ -1,0 +1,7 @@
+{
+	"appName": "churn-cms",
+	"port.external": 80,
+	"log.level": "INFO",
+	"log.pretty.print": "false",
+	"log.enabled": "true"
+}

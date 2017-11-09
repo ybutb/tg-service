@@ -1,4 +1,6 @@
-export class TgApiRequest {
+class tgApiRequest {
 	body = {};
-	url = '/';
+	url = '';
 }
+
+module.exports = new tgApiRequest();

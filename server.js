@@ -1,9 +1,9 @@
 'use strict';
-const config = require('./src/config/config.json');
+const config = require('./config/config.json');
 const settings = require('./settings.json');
-const logger = require( './src/logger' );
+const logger = require( './dist/logger' );
 const process = require('process');
-const router = require('./src/components/router');
+const router = require('./dist/components/router');
 const express = require('express');
 const app = express();
 

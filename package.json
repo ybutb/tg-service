@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "stop": "pkill --signal SIGTERM tg-service"
+    "stop": "pkill --signal SIGTERM tg-service",
+    "build": "babel src -d dist",
+    "run": "npm run build && npm start -- ./server.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,9 @@
     "request": "^2.81.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-module-resolver": "^3.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "node-inspect": "^1.11.2"
   }
 }

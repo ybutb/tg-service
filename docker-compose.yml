@@ -1,0 +1,32 @@
+version: '3'
+services:
+
+    install:
+        image: tg-service
+        volumes:
+            - ./:/usr/src/app
+            - $SSH_AUTH_SOCK:/ssh-agent
+        environment:
+            SSH_AUTH_SOCK: /ssh-agent
+        entrypoint: npm
+        command: install
+        env_file: .env
+
+    update:
+        image: tg-service
+        volumes:
+            - ./:/usr/src/app
+        entrypoint: npm
+        command: update
+        env_file: .env
+
+    web:
+        image: tg-service
+        domainname: tg-service.com
+        entrypoint: npm run run
+        ports:
+            - "8081:80"
+        volumes:
+            - ./:/usr/src/app
+        env_file: .env
+        network_mode: bridge

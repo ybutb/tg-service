@@ -1,4 +1,4 @@
-const config = require('../config/config.json');
+const config = require('./../../config/config.json');
 const https = require("https");
 const request = require("request");
 const logger = require( '../logger' );

@@ -1,9 +1,9 @@
-const client = require('../components/botClient')();
-const filters = require('../components/filters');
+const client = require('components/botClient')();
+const filters = require('components/filters');
 const express = require('express');
 const Endpoint = require('./endpoint.js');
-import {TgApiRequest} from '../components/tgApiRequest';
-const config = require('../config/config.json');
+const TgApiRequest = require('../components/tgApiRequest');
+const config = require('./../../config/config.json');
 
 class postMemeEndpoint extends Endpoint {
 	apiRequest;
@@ -17,7 +17,7 @@ class postMemeEndpoint extends Endpoint {
 	getRoute() {
 		return express.Router()
 			.post('/', (req, res) => {
-				this.apiRequest.body.text = req.post('meme_link');
+					this.apiRequest.body.text = req.post('meme_link');
 					let response = client.post(this);
 					res.status(response.statusCode).send(response.body);
 				}
@@ -28,5 +28,6 @@ class postMemeEndpoint extends Endpoint {
 		return this.apiRequest;
 	}
 }
+let x = new postMemeEndpoint();
 
-module.exports = new postMemeEndpoint().getRoute();
+module.exports = x.getRoute();

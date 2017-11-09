@@ -1,8 +1,8 @@
 {
-  "apiKeyHash": "xxxxxxxxxxx",
+  "apiKeyHash": "xxxxx",
   "bot": {
-    "name": "meme_charon",
-    "key": "xxxxxxxxx",
+    "name": "xxxx",
+    "key": "xxxxx",
     "channel": "@givemesomememe"
   },
   "logPath": "logs/error.log"
