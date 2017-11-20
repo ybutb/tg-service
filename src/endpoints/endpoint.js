@@ -1,3 +1,10 @@
+/**
+ * Abstract service endpoint class.
+ *
+ * @package tg-service
+ * @author Ivan Ovcharenko ybutb88@gmail.com
+ */
+
 class Endpoint {
 	constructor() {
 		if (new.target === Endpoint) {

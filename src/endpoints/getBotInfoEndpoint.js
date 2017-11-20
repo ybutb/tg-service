@@ -1,3 +1,10 @@
+/**
+ * Endpoint class for returning bot data and description. Basically for service testing matters.
+ *
+ * @package tg-service
+ * @author Ivan Ovcharenko ybutb88@gmail.com
+ */
+
 const client = require('../components/botClient')();
 const filters = require('../components/filters');
 const express = require('express');

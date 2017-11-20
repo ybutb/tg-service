@@ -1,3 +1,10 @@
+/**
+ * Authentication middleware.
+ *
+ * @package tg-service
+ * @author Ivan Ovcharenko ybutb88@gmail.com
+ */
+
 const config = require('../config/config.json');
 const crypto = require('crypto');
 const logger = require( '../logger' );

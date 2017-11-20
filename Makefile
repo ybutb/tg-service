@@ -1,4 +1,4 @@
-DOCKER_REGISTRY=tg-service
+DOCKER_REGISTRY=tg-service.com
 
 docker-build:
 	@docker build -t $(DOCKER_REGISTRY) .
@@ -14,6 +14,11 @@ test: update
 
 start:
 	@docker-compose up web
+
+stop:
+	@docker stop $(DOCKER_REGISTRY)
+
+restart: stop start
 
 ssh:
 	@docker exec -it $(DOCKER_REGISTRY) sh

@@ -1,3 +1,10 @@
+/**
+ * Puts logs to the text file.
+ *
+ * @package tg-service
+ * @author Ivan Ovcharenko ybutb88@gmail.com
+ */
+
 'use strict';
 const fs = require('fs');
 const config = require('./../config/config.json');
@@ -8,7 +15,9 @@ const logger = () => {
     const path = config.logPath;
 
     pub.log = (message) => {
-        fs.writeFile(path, message, function (err) {
+        let currentTime = Date.now();
+
+        fs.appendFile(path, '[' + currentTime + '] ' + message + "\n", function (err) {
             if (err) throw err;
         });
     };

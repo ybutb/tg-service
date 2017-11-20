@@ -1,8 +1,14 @@
+/**
+ * Telegram API client.
+ *
+ * @package tg-service
+ * @author Ivan Ovcharenko ybutb88@gmail.com
+ */
+
 const config = require('./../../config/config.json');
-const https = require("https");
-const request = require("request");
+const rp = require('request-promise');
 const logger = require( '../logger' );
-const querystring = require('querystring');
+const Response = require('components/tgApiResponse');
 
 module.exports = () => {
 
@@ -22,23 +28,57 @@ module.exports = () => {
 		return send(endpoint, 'DELETE');
 	};
 
+	/**
+	 * Sends request to tg api.
+	 *
+	 * @param endpoint
+	 * @param method
+	 * @returns {Promise}
+	 */
 	const send = (endpoint, method) => {
 
-		request({
-			uri: 'https://api.telegram.org/bot' + config.bot.key + endpoint.getRequest().url,
-			port: 443,
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			method: method,
-			body: endpoint.getRequest().body,
-			json:true
-		}, (error, response) => {
-			if (error) {
-				logger.log(error);
-			}
+		return new Promise((resolve, reject) => {
+			let uri = 'https://api.telegram.org/bot' + config.bot.key + endpoint.getRequest().url;
 
-			return response;
+			let options = {
+				method: method,
+				uri: uri,
+				port: 443,
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: endpoint.getRequest().body,
+				json:true,
+				transform: (body, response) => {
+					response.data = body;
+					return response;
+				}
+			};
+
+			let telegramResponse = new Response(500, {});
+
+			rp(options)
+				.then((response) => {
+					let statusCode = response.statusCode;
+
+					if (statusCode === 'undefined') {
+						statusCode = 200;
+					}
+					telegramResponse.setStatusCode(statusCode);
+					telegramResponse.body = response.body.result;
+
+					resolve(telegramResponse);
+				})
+				.catch((err) => {
+					telegramResponse.setUnsuccessful();
+					logger.log('Unsuccessful response from Telegram API: ' + err);
+
+					if (err.statusCode !== 'undefined' && err.statusCode !== 0) {
+						telegramResponse.setStatusCode(err.statusCode);
+					}
+
+					reject(telegramResponse);
+				});
 		});
 
 	};

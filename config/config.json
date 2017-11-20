@@ -1,9 +1,9 @@
 {
-  "apiKeyHash": "3L908JENY4JAB3HMMUS5ALT",
+  "apiKeyHash": "xxxxxx",
   "bot": {
-    "name": "meme_charon",
-    "key": "337524409:AAEATlRT5gqa8xs3YHMR4V3365tvI15Tj-E",
-    "channel": "@givemesomememe"
+    "name": "xxxxx",
+    "key": "xxxxxx",
+    "channel": "xxxxx"
   },
   "logPath": "logs/error.log"
 }

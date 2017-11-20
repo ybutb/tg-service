@@ -1,3 +1,9 @@
+/**
+ * Custom request params filters.
+ *
+ * @package tg-service
+ * @author Ivan Ovcharenko ybutb88@gmail.com
+ */
 
 const filters = function() {
     let pub = {};
